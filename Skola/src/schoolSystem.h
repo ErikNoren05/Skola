@@ -10,6 +10,7 @@ public:
 	void run();
 	void addStudent();
 	void removeStudent();
+	void menu();
 
 	std::vector <Student> students;
 	std::vector <std::string> schoolClasses;

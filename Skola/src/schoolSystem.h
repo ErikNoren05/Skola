@@ -8,11 +8,13 @@ class schoolSystem
 {
 public: 
 	void run();
-	void addStudent();
+	void addStudent(std::string newName, int newAge);
 	void removeStudent();
 	void menu();
 
+	//studenterna lista
 	std::vector <Student> students;
+	//alla klasser lista
 	std::vector <std::string> schoolClasses;
 
 };

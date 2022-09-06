@@ -20,6 +20,8 @@ void schoolSystem::run()
 }
 
 void schoolSystem::addStudent()
+
+
 {
 	Student Student;
 	Student.name = "vlka";

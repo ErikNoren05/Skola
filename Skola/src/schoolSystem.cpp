@@ -3,11 +3,15 @@
 void schoolSystem::run()
 {
 	int input = 0;
+	int ålder = 0;
+	std::string typing = "";
 	int counter = 0;
+	
 	while (true)
 	{
-		
 		menu();
+		std::cin >> input;
+		
 
 		//meny
 		//input
@@ -22,17 +26,28 @@ void schoolSystem::run()
 		switch (input)
 		{
 		case 1:
-			
 
 			
+				std::cout << "vad heter hen? \n";
+				std::cin >> typing;
+				
 
+				std::cout << "hur gamaml ar hen? \n";
+				std::cin >> ålder;
+				
 
-			for (auto i : students)
-			{
-				std::cout << i.name << '_';
-				std::cout << i.age << '_';
-			}
-			break;
+				std::cout << "elev " << typing << " som ar " << ålder << " ar gammal laggs till \n";
+
+				addStudent(typing, ålder);
+				
+				for (auto i : students)
+				{
+					std::cout << i.name <<" " << "\n";
+					std::cout << i.age <<" " << "\n";
+				}
+
+				break;
+			
 
 		case 2:
 
@@ -61,11 +76,20 @@ void schoolSystem::run()
 		case 8:
 			
 			break;
-		}
 
-		std::cin.get();
+		case 9: 
+			std::cout << "hejda";
+			return;
+
+		default: 
+			std::cout << "detta var inget nummer";
+			break;
+		}
+		
 		
 	}
+	std::cout << "slut";
+	std::cin.get();
 }
 
 void schoolSystem::addStudent(std::string newName, int newAge)

@@ -4,6 +4,7 @@ void schoolSystem::run()
 {
 	int input = 0;
 	int ålder = 0;
+	std::string Class = "";
 	std::string typing = "";
 	std::string controller = "";
 	int counter = 0;
@@ -19,6 +20,7 @@ void schoolSystem::run()
 		
 		switch (input)
 		{
+		//lägger till studenter
 		case 1:
 
 			
@@ -32,7 +34,7 @@ void schoolSystem::run()
 
 				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n";
 
-				addStudent(typing, ålder);
+				addStudent(typing,Class, ålder);
 				
 				for (auto i : students)
 				{
@@ -42,7 +44,7 @@ void schoolSystem::run()
 
 				break;
 			
-
+		//lägger till klasser
 		case 2:
 
 			std::cout << "Whats the name of the class? \n";
@@ -57,23 +59,36 @@ void schoolSystem::run()
 
 			break;
 			
+
+		//väljer 
 		case 3:
 
 			std::cout << "whats the name of the student? \n";
 			std::cin >> typing;
+			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 			for (auto i : students)
-			{
-				
+			{	
 
 				if(typing == i.name)
 				{
-					std::cout << "hej";
+					std::cout << "What class do you want to add the student to";
+					std::cin >> Class;
+					std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
+
+					for (auto i : schoolClasses)
+					{
+						if (typing == i) 
+						{
+							addStudent(null, Class, null);
+							std::cout << "okej";
+						}
+					}
+					break;
 				}
 
 				std::cout << "fel";
 				
 			}
-
 			break;
 
 		case 4:
@@ -109,11 +124,12 @@ void schoolSystem::run()
 	std::cin.get();
 }
 
-void schoolSystem::addStudent(std::string newName, int newAge)
+void schoolSystem::addStudent(std::string newName, std::string newClass, int newAge)
 {
 	Student Student;
 	Student.name = newName;
 	Student.age = newAge;
+	Student.Class = newClass;
 
 	students.push_back(Student);
 	

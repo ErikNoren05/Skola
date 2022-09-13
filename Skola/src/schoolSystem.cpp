@@ -63,24 +63,25 @@ void schoolSystem::run()
 		//väljer 
 		case 3:
 
-			std::cout << "whats the name of the student? \n";
-			std::cin >> typing;
-			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-			for (auto i : students)
+			std::cout << "whats the class you want to add a student in? \n";
+			std::cin >> Class;
+			std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
+			for (auto i : schoolClasses)
 			{	
 
-				if(typing == i.name)
+				if(Class == i)
 				{
-					std::cout << "What class do you want to add the student to";
-					std::cin >> Class;
-					std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
+					std::cout << "What the name of the student? \n";
+					std::cin >> typing;
+					std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
-					for (auto i : schoolClasses)
+					for (auto i : students)
 					{
-						if (typing == i) 
+						if (typing == i.name) 
 						{
-							addStudent(null, Class, null);
-							std::cout << "okej";
+							i.Class = Class;
+							std::cout << i.name << "\n" << i.Class << "\n" << i.age << "\n";
+							std::cout << "Student adda \n \n";
 						}
 					}
 					break;

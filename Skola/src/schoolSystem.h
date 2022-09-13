@@ -3,6 +3,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include <cctype>
+
+
 
 class schoolSystem
 {

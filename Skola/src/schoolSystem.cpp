@@ -5,6 +5,7 @@ void schoolSystem::run()
 	int input = 0;
 	int ålder = 0;
 	std::string typing = "";
+	std::string controller = "";
 	int counter = 0;
 	
 	while (true)
@@ -12,6 +13,9 @@ void schoolSystem::run()
 		menu();
 		std::cin >> input;
 		
+
+		
+
 		
 		switch (input)
 		{
@@ -20,13 +24,13 @@ void schoolSystem::run()
 			
 				std::cout << "vad heter hen? \n";
 				std::cin >> typing;
-				
+				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
-				std::cout << "hur gamaml ar hen? \n";
+				std::cout << "how old is hen? \n";
 				std::cin >> ålder;
 				
 
-				std::cout << "elev " << typing << " som ar " << ålder << " ar gammal laggs till \n";
+				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n";
 
 				addStudent(typing, ålder);
 				
@@ -41,8 +45,9 @@ void schoolSystem::run()
 
 		case 2:
 
-			std::cout << "vad heter klassen? \n";
+			std::cout << "Whats the name of the class? \n";
 				std::cin >> typing;
+				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
 				addclass(typing);
 				for (auto i : schoolClasses)
@@ -51,8 +56,23 @@ void schoolSystem::run()
 				}
 
 			break;
-
+			
 		case 3:
+
+			std::cout << "whats the name of the student? \n";
+			std::cin >> typing;
+			for (auto i : students)
+			{
+				
+
+				if(typing == i.name)
+				{
+					std::cout << "hej";
+				}
+
+				std::cout << "fel";
+				
+			}
 
 			break;
 
@@ -119,7 +139,8 @@ void schoolSystem::menu()
 
 
 
-
+//To lower function
+//std::transform(input.begin(), input.end(), input.begin(), [](unsigned char c) {return std::tolower(c); });
 
 //meny
 //input

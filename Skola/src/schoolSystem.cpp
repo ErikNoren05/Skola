@@ -20,7 +20,7 @@ void schoolSystem::run()
 		
 		switch (input)
 		{
-		//lägger till studenter
+		//adds students
 		case 1:
 
 			
@@ -44,7 +44,7 @@ void schoolSystem::run()
 
 				break;
 			
-		//lägger till klasser
+		//adds class
 		case 2:
 
 			std::cout << "Whats the name of the class? \n";
@@ -60,7 +60,7 @@ void schoolSystem::run()
 			break;
 			
 
-		//väljer 
+		//add students to class
 		case 3:
 
 			std::cout << "whats the class you want to add a student in? \n";
@@ -81,7 +81,7 @@ void schoolSystem::run()
 						{
 							i.Class = Class;
 							std::cout << i.name << "\n" << i.Class << "\n" << i.age << "\n";
-							std::cout << "Student adda \n \n";
+							std::cout << "Student added \n \n";
 						}
 					}
 					break;
@@ -91,8 +91,21 @@ void schoolSystem::run()
 				
 			}
 			break;
-
+			//search for student
 		case 4:
+
+			std::cout << "what the name of the studnet?\n";
+			std::cin >> typing;
+			for (auto i : students)
+			{
+				if (typing == i.name)
+				{
+					
+				}
+			}
+
+
+
 
 			break;
 

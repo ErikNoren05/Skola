@@ -20,7 +20,7 @@ void schoolSystem::run()
 		
 		switch (input)
 		{
-		//adds students
+		//adds student
 		case 1:
 
 			
@@ -34,7 +34,7 @@ void schoolSystem::run()
 
 				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n";
 
-				addStudent(typing,Class, ålder);
+				addStudent(typing, Class, ålder);
 				
 				for (auto i : students)
 				{
@@ -91,45 +91,84 @@ void schoolSystem::run()
 				
 			}
 			break;
+
+
 			//search for student
 		case 4:
 
+			counter = 0;
 			std::cout << "what the name of the studnet?\n";
 			std::cin >> typing;
 			for (auto i : students)
 			{
 				if (typing == i.name)
 				{
-					
+					std::cout << i.name << ", " << i.age << " years, are in class " << i.Class << "\n";
+					counter++;
+					continue;
+				}
+				
+			}
+			if (counter == 0)
+			{
+				std::cout << "student does not exist in database \n";
+			}
+			break;
+
+			//remove student form class
+		case 5:
+			counter = 0;
+			std::cout << "whats the students name";
+			std::cin >> typing;
+			for (auto i : students)
+			{
+				if (typing == i.name)
+				{
+					std::cout << i.name << ", " << i.age << " years, are in class " << i.Class << "\n";
+					counter++;
+					continue;
+				}
+
+			}
+			if (counter == 0)
+			{
+				std::cout << "student does not exist";
+				break;
+			}
+			else
+			{
+				std::cout << "what the name of the sutdent you want to remove?";
+				std::cin >> typing;
+				for (auto i : students)
+				{
+					if (typing == i.name)
+					{
+
+					}
 				}
 			}
 
 
-
-
 			break;
 
-		case 5:
-
-			break;
-
+			//remove student from system
 		case 6:
+			
 
 			break;
 
+			//
 		case 7:
 
 			break;
 
+			//avslut
 		case 8:
-			
-			break;
-
-		case 9: 
-			std::cout << "hejda";
+			std::cout << "bye";
 			return;
 
-		
+
+
 		}
 		
 		
@@ -164,7 +203,7 @@ void schoolSystem::removeStudent()
 
 void schoolSystem::menu()
 {
-	std::cout << "what do you want to do? \n" << "1. new student \n" << "2. new class \n" << "3. add student to class \n" << "4. search for student \n" << "5. information about student \n" << "6. remove student from class \n" << "7. remove student from system \n" << "8. information about class \n" << "9. avsluta \n";
+	std::cout << "what do you want to do? \n" << "1. new student \n" << "2. new class \n" << "3. add student to class \n" << "4. search for student \n" << "5. remove student from class \n" << "6. remove student from system \n" << "7. information about class \n" << "8. exit \n";
 }
 
 

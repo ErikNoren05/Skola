@@ -63,6 +63,7 @@ void schoolSystem::run()
 		//add students to class
 		case 3:
 
+			counter = 0;
 			std::cout << "whats the class you want to add a student in? \n";
 			std::cin >> Class;
 			std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
@@ -74,19 +75,35 @@ void schoolSystem::run()
 					std::cout << "What the name of the student? \n";
 					std::cin >> typing;
 					std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-
+					std::cout << "whats the age of the student? \n";
 					for (auto i : students)
 					{
 						if (typing == i.name) 
 						{
-							i.Class = Class;
-							std::cout << i.name << "\n" << i.Class << "\n" << i.age << "\n";
-							std::cout << "Student added \n \n";
+							counter++;
 						}
 					}
+					if (counter == 1)
+					{
+						for (auto i : students)
+						{
+							if (typing == i.name)
+							{
+								i.Class = Class;
+								std::cout << i.name << "\n" << i.Class << "\n" << i.age << "\n";
+								std::cout << "Student added \n \n";
+							}
+						}
+						
+					}
+					
 					break;
 				}
-
+				/*
+				i.Class = Class;
+							std::cout << i.name << "\n" << i.Class << "\n" << i.age << "\n";
+							std::cout << "Student added \n \n";
+							*/
 				std::cout << "fel";
 				
 			}
@@ -99,6 +116,7 @@ void schoolSystem::run()
 			counter = 0;
 			std::cout << "what the name of the studnet?\n";
 			std::cin >> typing;
+			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 			for (auto i : students)
 			{
 				if (typing == i.name)
@@ -120,6 +138,7 @@ void schoolSystem::run()
 			counter = 0;
 			std::cout << "whats the students name";
 			std::cin >> typing;
+			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 			for (auto i : students)
 			{
 				if (typing == i.name)
@@ -139,11 +158,18 @@ void schoolSystem::run()
 			{
 				std::cout << "what the name of the sutdent you want to remove?";
 				std::cin >> typing;
+				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 				for (auto i : students)
 				{
 					if (typing == i.name)
 					{
-
+						std::cout << "whats the class you want to remove the student from?";
+						std::cin >> typing;
+						if (typing == i.Class)
+						{
+							i.Class = "";
+							std::cout << "student is no longer in class " << i.Class << "\n";
+						}
 					}
 				}
 			}

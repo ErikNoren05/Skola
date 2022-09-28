@@ -24,7 +24,7 @@ void schoolSystem::run()
 		case 1:
 
 			
-				std::cout << "vad heter hen? \n";
+				std::cout << "whats the students name? \n";
 				std::cin >> typing;
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
@@ -36,7 +36,7 @@ void schoolSystem::run()
 
 				addStudent(typing, Class, ålder);
 				
-				for (auto i : students)
+				for (auto& i : students)
 				{
 					std::cout << i.name <<" " << "\n";
 					std::cout << i.age <<" " << "\n";
@@ -52,7 +52,7 @@ void schoolSystem::run()
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
 				addclass(typing);
-				for (auto i : schoolClasses)
+				for (auto& i : schoolClasses)
 				{
 					std::cout << i << " " << "\n";
 				}
@@ -67,7 +67,7 @@ void schoolSystem::run()
 			std::cout << "whats the class you want to add a student in? \n";
 			std::cin >> Class;
 			std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
-			for (auto i : schoolClasses)
+			for (auto& i : schoolClasses)
 			{
 
 				if (i != Class)
@@ -82,7 +82,7 @@ void schoolSystem::run()
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
-			for (auto i : students)
+			for (auto& i : students)
 			{
 				if (typing == i.name)
 				{
@@ -106,7 +106,7 @@ void schoolSystem::run()
 			std::cout << "what the name of the studnet?\n";
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-			for (auto i : students)
+			for (auto& i : students)
 			{
 				if (typing == i.name)
 				{
@@ -128,45 +128,25 @@ void schoolSystem::run()
 			//remove student form class
 		case 5:
 			counter = 0;
-			std::cout << "whats the students name?";
+			std::cout << "whats the name of the student you want to remove? \n";
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-			for (auto i : students)
+			for (auto& i : students)
 			{
 				if (typing == i.name)
 				{
-					std::cout << i.name << ", " << i.age << " years, are in class " << i.Class << "\n";
-					counter++;
-					continue;
-				}
-
-			}
-			if (counter == 0)
-			{
-				std::cout << "student does not exist";
-				break;
-			}
-			else
-			{
-				std::cout << "what the name of the sutdent you want to remove?";
-				std::cin >> typing;
-				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-				for (auto i : students)
-				{
-					if (typing == i.name)
+					std::cout << i.name << " " << i.Class << " " << i.age <<"\n";
+					std::cout << "do you want to remove " << i.name << " from " << i.Class << "? Yes/No \n";
+					std::cin >> Class;
+					std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
+					if (Class == "yes")
 					{
-						std::cout << "whats the class you want to remove the student from?";
-						std::cin >> Class;
-						if (Class == i.Class)
-						{
-							i.Class = "";
-							std::cout << "student is no longer in class " << Class << "\n";
-						}
+						i.Class = "";
+						std::cout << "student remove from class \n";
 					}
 				}
+
 			}
-
-
 			break;
 
 			//remove student from system
@@ -175,7 +155,7 @@ void schoolSystem::run()
 			std::cout << "whats the name of the student? \n";
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-			for (auto i : students)
+			for (auto& i : students)
 			{
 				if (typing == i.name)
 				{

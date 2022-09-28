@@ -78,7 +78,7 @@ void schoolSystem::run()
 
 				
 			}
-			std::cout << "What the students name you want to add to " << Class << "\n";
+			std::cout << "Whats the students name you want to add to " << Class << "\n";
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
@@ -87,6 +87,7 @@ void schoolSystem::run()
 				if (typing == i.name)
 				{
 					i.Class = Class;
+					std::cout << i.name << " are now in " << i.Class << "\n";
 				}
 				/*if (counter == 1)
 				{
@@ -109,7 +110,8 @@ void schoolSystem::run()
 			{
 				if (typing == i.name)
 				{
-					std::cout << i.name << ", " << i.age << " years, are in class " << i.Class << "\n";
+					std::cout << i.Class << "\n";
+					std::cout << i.name << ", " << i.age << " years old, are in class " << i.Class << "\n";
 					counter++;
 					continue;
 				}
@@ -120,6 +122,8 @@ void schoolSystem::run()
 				std::cout << "student does not exist in database \n";
 			}
 			break;
+
+
 
 			//remove student form class
 		case 5:
@@ -156,7 +160,7 @@ void schoolSystem::run()
 						if (Class == i.Class)
 						{
 							i.Class = "";
-							std::cout << "student is no longer in class " << i.Class << "\n";
+							std::cout << "student is no longer in class " << Class << "\n";
 						}
 					}
 				}
@@ -171,7 +175,7 @@ void schoolSystem::run()
 
 			break;
 
-			//
+			//information about class
 		case 7:
 
 			break;

@@ -172,6 +172,29 @@ void schoolSystem::run()
 			//remove student from system
 		case 6:
 			
+			std::cout << "whats the name of the student? \n";
+			std::cin >> typing;
+			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
+			for (auto i : students)
+			{
+				if (typing == i.name)
+				{
+					std::cout << "are you sure? Yes/No \n";
+					std::cin >> Class;
+					std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
+					if (Class == "yes")
+					{
+						std::cout << "okej, student errased from system \n";
+						i.name = "deleted";
+						i.age = NULL;
+						i.Class = "deleted";
+						break;;
+					}
+					std::cout << "okej, student not errsed \n";
+					break;
+				}
+			}
+
 
 			break;
 

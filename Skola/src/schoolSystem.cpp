@@ -73,30 +73,30 @@ void schoolSystem::run()
 
 				if (i == Class)
 				{
-					std::cout << "class found";
-					break;
+					std::cout << "Whats the students name you want to add to " << Class << "\n";
+					std::cin >> typing;
+					std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
+
+					for (auto& i : students)
+					{
+						if (typing == i.name)
+						{
+							i.Class = Class;
+							std::cout << i.name << " are now in " << i.Class << "\n";
+						}
+						/*if (counter == 1)
+						{
+							i.Class = Class;
+							std::cout << students.name << " has been added to " << i.Class << "\n";
+						}
+						ÖVERDRIFT MÅSTE INTE ^^*/
+					}
+					
 				}
 
 				
 			}
-			std::cout << "Whats the students name you want to add to " << Class << "\n";
-			std::cin >> typing;
-			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-
-			for (auto& i : students)
-			{
-				if (typing == i.name)
-				{
-					i.Class = Class;
-					std::cout << i.name << " are now in " << i.Class << "\n";
-				}
-				/*if (counter == 1)
-				{
-					i.Class = Class;
-					std::cout << students.name << " has been added to " << i.Class << "\n";
-				}  
-				ÖVERDRIFT MÅSTE INTE ^^*/
-			}			
+					
 			break;
 
 

@@ -47,11 +47,12 @@ void schoolSystem::run()
 		//adds class
 		case 2:
 
-			std::cout << "Whats the name of the class? \n";
+			std::cout << "Whats the name of the class you want to create? \n";
 				std::cin >> typing;
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
 				addclass(typing);
+				std::cout << "schoolclass added";
 				for (auto& i : schoolClasses)
 				{
 					std::cout << i << " " << "\n";
@@ -70,10 +71,10 @@ void schoolSystem::run()
 			for (auto& i : schoolClasses)
 			{
 
-				if (i != Class)
+				if (i == Class)
 				{
-					std::cout << "fel";
-					return;
+					std::cout << "class found";
+					break;
 				}
 
 				
@@ -180,6 +181,22 @@ void schoolSystem::run()
 
 			//information about class
 		case 7:
+
+			for (auto& i : schoolClasses)
+			{
+				std::cout << i << "\n";
+			}
+			std::cout << "What class do you want to look at? \n";
+			std::cin >> typing;
+			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
+			std::cout << "the following students are in class " << typing << "\n";
+			for (auto& i : students)
+			{
+				if (typing == i.Class)
+				{
+					std::cout << i.name << ", " << i.age << "\n";
+				}
+			}
 
 			break;
 

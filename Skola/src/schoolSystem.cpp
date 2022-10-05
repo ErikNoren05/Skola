@@ -22,7 +22,7 @@ void schoolSystem::run()
 				std::cin >> typing;
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
-				std::cout << "how old is hen? \n";
+				std::cout << "how old is he/she? \n";
 				std::cin >> ålder;
 				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n\n";
 				addStudent(typing, Class, ålder);

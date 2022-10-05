@@ -13,35 +13,19 @@ void schoolSystem::run()
 	{
 		menu();
 		std::cin >> input;
-		
-
-		
-
-		
 		switch (input)
 		{
 		//adds student
 		case 1:
 
-			
 				std::cout << "whats the students name? \n";
 				std::cin >> typing;
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 
 				std::cout << "how old is hen? \n";
 				std::cin >> ålder;
-				
-
-				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n";
-
+				std::cout << "student " << typing << " that is " << ålder << " years old has been added \n\n";
 				addStudent(typing, Class, ålder);
-				
-				for (auto& i : students)
-				{
-					std::cout << i.name <<" " << "\n";
-					std::cout << i.age <<" " << "\n";
-				}
-
 				break;
 			
 		//adds class
@@ -50,17 +34,10 @@ void schoolSystem::run()
 			std::cout << "Whats the name of the class you want to create? \n";
 				std::cin >> typing;
 				std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
-
 				addclass(typing);
-				std::cout << "schoolclass added";
-				for (auto& i : schoolClasses)
-				{
-					std::cout << i << " " << "\n";
-				}
-
+				std::cout << "schoolclass added \n\n";
 			break;
 			
-
 		//add students to class
 		case 3:
 
@@ -69,8 +46,7 @@ void schoolSystem::run()
 			std::cin >> Class;
 			std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
 			for (auto& i : schoolClasses)
-			{
-
+			{ 
 				if (i == Class)
 				{
 					std::cout << "Whats the students name you want to add to " << Class << "\n";
@@ -82,23 +58,13 @@ void schoolSystem::run()
 						if (typing == i.name)
 						{
 							i.Class = Class;
-							std::cout << i.name << " are now in " << i.Class << "\n";
+							std::cout << i.name << " are now in " << i.Class << "\n\n";
+							break;
 						}
-						/*if (counter == 1)
-						{
-							i.Class = Class;
-							std::cout << students.name << " has been added to " << i.Class << "\n";
-						}
-						ÖVERDRIFT MÅSTE INTE ^^*/
 					}
-					
 				}
-
-				
-			}
-					
+			}	
 			break;
-
 
 			//search for student
 		case 4:
@@ -111,20 +77,16 @@ void schoolSystem::run()
 			{
 				if (typing == i.name)
 				{
-					std::cout << i.Class << "\n";
 					std::cout << i.name << ", " << i.age << " years old, are in class " << i.Class << "\n";
 					counter++;
 					continue;
 				}
-				
 			}
 			if (counter == 0)
 			{
-				std::cout << "student does not exist in database \n";
+				std::cout << "student does not exist in database \n\n";
 			}
 			break;
-
-
 
 			//remove student form class
 		case 5:
@@ -136,17 +98,16 @@ void schoolSystem::run()
 			{
 				if (typing == i.name)
 				{
-					std::cout << i.name << " " << i.Class << " " << i.age <<"\n";
+					std::cout << i.name << " are in class " << i.Class << "\n";
 					std::cout << "do you want to remove " << i.name << " from " << i.Class << "? Yes/No \n";
 					std::cin >> Class;
 					std::transform(Class.begin(), Class.end(), Class.begin(), [](unsigned char c) {return std::tolower(c); });
 					if (Class == "yes")
 					{
 						i.Class = "";
-						std::cout << "student remove from class \n";
+						std::cout << "student remove from class \n\n";
 					}
 				}
-
 			}
 			break;
 
@@ -166,17 +127,15 @@ void schoolSystem::run()
 					if (Class == "yes")
 					{
 						std::cout << "okej, student errased from system \n";
-						i.name = "deleted";
+						i.name = "";
 						i.age = NULL;
-						i.Class = "deleted";
+						i.Class = "";
 						break;;
 					}
-					std::cout << "okej, student not errsed \n";
+					std::cout << "okej, student not errased \n";
 					break;
 				}
 			}
-
-
 			break;
 
 			//information about class
@@ -186,7 +145,7 @@ void schoolSystem::run()
 			{
 				std::cout << i << "\n";
 			}
-			std::cout << "What class do you want to look at? \n";
+			std::cout << "What class do you want to look at? \n The following classes exist in the database \n";
 			std::cin >> typing;
 			std::transform(typing.begin(), typing.end(), typing.begin(), [](unsigned char c) {return std::tolower(c); });
 			std::cout << "the following students are in class " << typing << "\n";
@@ -197,7 +156,6 @@ void schoolSystem::run()
 					std::cout << i.name << ", " << i.age << "\n";
 				}
 			}
-
 			break;
 
 			//avslut
@@ -205,13 +163,12 @@ void schoolSystem::run()
 			std::cout << "bye";
 			return;
 
-
-
-		}
-		
-		
+		default:
+			std::cout << "something went wrong, try again \n\n";
+			std::cin >> input;
+			break;
+		}		
 	}
-	std::cout << "utanfor while";
 	std::cin.get();
 }
 
